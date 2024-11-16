@@ -1,0 +1,13 @@
+[package]
+name = "variable-resolver"
+version = "1.0.0"
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/bytifex/variable-resolver.git"
+description = "The aim of this package is to easily replace variables inside a given template."
+readme = "README.md"
+keywords = ["template"]
+
+[dependencies]
+thiserror = "2.0"
+clap = { version = "4.5", features = ["derive"] }
