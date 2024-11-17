@@ -33,7 +33,7 @@ Be aware that writing to the same file as the source is **not safe**. Example:
 cat greeting.txt | repvar -v name=Jane > greeting.txt
 ```
 
-# Todos
+## Todos
 * docstring
 * case-insensitive variable resolver mode
 * load variables from environment variables
