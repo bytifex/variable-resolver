@@ -12,22 +12,13 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let variables = cli
         .variables
         .iter()
-        .map(|key_value_pair| {
-            let mut parts = key_value_pair.split('=');
-            let key = parts
-                .next()
-                .ok_or_else(|| InvalidVariableDefinition(key_value_pair.clone()))?;
-            let value = parts
-                .next()
-                .ok_or_else(|| InvalidVariableDefinition(key_value_pair.clone()))?;
-
-            if parts.next().is_some() {
-                return Err(InvalidVariableDefinition(key_value_pair.to_string()));
-            }
-
-            Ok((key, value))
+        .map(|variable_name_value_pair| {
+            (
+                variable_name_value_pair.variable_name_ref().as_str(),
+                variable_name_value_pair.variable_value_ref().as_str(),
+            )
         })
-        .collect::<Result<BTreeMap<&str, &str>, InvalidVariableDefinition>>()?;
+        .collect::<BTreeMap<&str, &str>>();
 
     let mut input = String::new();
     std::io::stdin().read_to_string(&mut input)?;
@@ -38,7 +29,3 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     Ok(())
 }
-
-#[derive(Debug, thiserror::Error)]
-#[error("InvalidVariableDefinition = '{0}'")]
-pub struct InvalidVariableDefinition(String);

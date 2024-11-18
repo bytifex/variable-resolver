@@ -39,4 +39,3 @@ cat greeting.txt | repvar -v name=Jane > greeting.txt
 * load variables from environment variables
 * load variables from .env files
 * load template from file
-* replace variable with empty string
