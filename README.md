@@ -18,7 +18,7 @@ Escaping double curly braces happens by using triple curly braces. Examples:
 * The following template: `Hello, {{{{{{name}}}}}}` will resolve to `Hello, {{{{name}}}}`
 
 ## Using *repvar* cli utility
-The following example demonstrates how every occurence of a variale, named *name*, can be replaced with *Jane* in the given template. Example:
+The following example demonstrates how every occurence of a variable is replaced with a value. In the following case every *{{name}}* is replaced with *Jane*:
 ```bash
 echo "Hello, {{name}}" | repvar -v name=Jane
 ```
